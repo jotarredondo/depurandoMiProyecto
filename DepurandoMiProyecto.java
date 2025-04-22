@@ -221,24 +221,30 @@ public static void main(String[] args) {
     public static List<EntradaReservada> comprarEntrada(String[] listaA, String[] listaB, String[] listaC, List<EntradaReservada> listaReservada) {
         List<EntradaReservada> listaCompradas = new ArrayList<>();
         List<EntradaReservada> listaEliminar = new ArrayList<>();
+        //BREAKPOINT INCLUIDO : validar ciclo for
         for (EntradaReservada entradaReservada : listaReservada) {
+            //BREAKPOINT INCLUIDO : validar si entra al if
             if (entradaReservada.reservada) {
                 String ubicacionStr = entradaReservada.ubicacionReservada;
                 int posicion = Integer.parseInt(ubicacionStr) - 1;
                 String vendida = "[Vendida]";
+                //BREAKPOINT INCLUIDO : validar valor del switch
                 switch (entradaReservada.evento) {
                     case "A":
                         if (posicion >= 0 && posicion < listaA.length) {
+                            //BREAKPOINT INCLUIDO : validar si actualiza campo
                             listaA[posicion] = vendida;
                         }
                         break;
                     case "B":
                         if (posicion >= 0 && posicion < listaB.length) {
+                            //BREAKPOINT INCLUIDO : validar si actualiza campo
                             listaB[posicion] = vendida;
                         }
                         break;
                     case "C":
                         if (posicion >= 0 && posicion < listaC.length) {
+                            //BREAKPOINT INCLUIDO : validar si actualiza campo
                             listaC[posicion] = vendida;
                         }
                         break;
@@ -247,7 +253,9 @@ public static void main(String[] args) {
                 listaEliminar.add(entradaReservada);
             }
         }
+        //BREAKPOINT INCLUIDO : validar removeall lista
         listaReservada.removeAll(listaEliminar);
+        //BREAKPOINT INCLUIDO : validar return
         return listaCompradas;
     }
 
@@ -274,25 +282,32 @@ public static void main(String[] args) {
         int contadorA = 0;
         int contadorB = 0;
         int contadorC = 0;
+        //BREAKPOINT INCLUIDO : validar ciclo for
         for (EntradaReservada entradaReservada : lista) {
+            //BREAKPOINT INCLUIDO : validar si entra al evento A
             if (entradaReservada.getEvento().equals("A")) {
                 System.out.println("Obra : " + EVENTO_A);
                 System.out.println("Ubicacion Comprada : " + entradaReservada.getUbicacionReservada());
                 System.out.println("Precio Unitario : " + precioA);
+                //BREAKPOINT INCLUIDO : validar contador
                 contadorA++;
+                //BREAKPOINT INCLUIDO : validar si entra al evento B
             } else if (entradaReservada.getEvento().equals("B")) {
                 System.out.println("Obra : " + EVENTO_B);
                 System.out.println("Ubicacion Reservada : " + entradaReservada.getUbicacionReservada());
                 System.out.println("Precio Unitario : " + precioB);
                 contadorB++;
+                //BREAKPOINT INCLUIDO : validar si entra al evento C
             } else {
                 System.out.println("Obra : " + EVENTO_C);
                 System.out.println("Ubicacion Reservada : " + entradaReservada.getUbicacionReservada());
                 System.out.println("Precio Unitario : $ " + precioC);
                 contadorC++;
+                //BREAKPOINT INCLUIDO : validar contador
             }
             System.out.println("-------------------------------");
         }
+        //BREAKPOINT INCLUIDO : validar total pagado
         int total = ((precioA * contadorA) + (precioB * contadorB) + (precioC * contadorC));
         System.out.println("Total Pagado : $ " + total);
         System.out.println(SALTO_DE_LINEA);
